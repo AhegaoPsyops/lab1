@@ -1,39 +1,41 @@
 import java.util.HashMap;
 import java.util.Map;
 class Purse {
-    private final Map<String, Integer> cash = new HashMap<>();
+    private final Map<Denomination, Integer> cash = new HashMap<>();
 
-    public void add(String denomination, int count) {
-        if (count > 0) {
-            cash.put(denomination, cash.getOrDefault(denomination, 0) + count);
+
+    public void add(Denomination type, int num) {
+        if (num > 0) {
+            cash.put(type, cash.getOrDefault(type, 0) + num);
         }
     }
-    public double remove(String denomination, int count) {
-        if (count > 0) {
-            cash.put(denomination, cash.getOrDefault(denomination, 0) + count);
+    // somehow this works
+    public double remove(Denomination type, int num) {
+        if (!cash.containsKey(type) || cash.get(type) < num) {
+            throw new IllegalArgumentException("Not enough of this denomination in the purse.");
         }
-        return 0;
+        cash.put(type, cash.get(type) - num);
+        if (cash.get(type) == 0) {
+            cash.remove(type);
+        }
+        return num * type.amount();
     }
-    public void getValue() {
 
+    public double getValue() {
+        return cash.entrySet().stream()
+                .mapToDouble(entry -> entry.getKey().amount() * entry.getValue())
+                .sum();
     }
-    public void printContents() {
-        System.out.println("Change breakdown:");
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Purse Contents:\n");
         for (var entry : cash.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+            sb.append(entry.getKey().name()).append(" (")
+                    .append(entry.getKey().form()).append("): ")
+                    .append(entry.getValue()).append("\n");
         }
+        sb.append("Total Value: $").append(String.format("%.2f", getValue()));
+        return sb.toString();
     }
-    Denomination hundred = new Denomination("Hundred Dollar Bill", 100.00,"cash", "/path");
-    Denomination fifty = new Denomination("Fifty Dollar Bill", 50.00, "cash", "/path");
-    Denomination twenty = new Denomination("Twenty Dollar Bill", 20.00,"cash", "/path");
-    Denomination ten = new Denomination("Ten Dollar Bill", 20.00, "cash", "/path");
-    Denomination five = new Denomination("Five Dollar Bill", 50.00, "cash", "/path");
-    Denomination one = new Denomination("One Dollar Bill", 20.00, "cash", "/path");
-    Denomination quarter = new Denomination("Quarter", .25, "change", "/path");
-    Denomination dime = new Denomination("Dime", .10, "change", "/path");
-    Denomination nickel = new Denomination("Nickel", .5, "change", "/path");
-    Denomination penny = new Denomination("Penny", .1, "change", "/path");
-
 }
-
-
+// im beginning to think i dont understand java
