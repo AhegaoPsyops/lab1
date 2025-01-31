@@ -22,20 +22,17 @@ class Purse {
     }
 
     public double getValue() {
-        return cash.entrySet().stream()
-                .mapToDouble(entry -> entry.getKey().amount() * entry.getValue())
-                .sum();
+        return cash.entrySet().stream().mapToDouble(entry -> entry.getKey().amount() * entry.getValue()).sum();
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder("Purse Contents:\n");
         for (var entry : cash.entrySet()) {
-            sb.append(entry.getKey().name()).append(" (")
-                    .append(entry.getKey().form()).append("): ")
-                    .append(entry.getValue()).append("\n");
+            sb.append(entry.getKey().name()).append(" (").append(entry.getKey().form()).append("): ").append(entry.getValue()).append("\n");
         }
         sb.append("Total Value: $").append(String.format("%.2f", getValue()));
         return sb.toString();
     }
 }
 // im beginning to think i dont understand java
+// written with the ballmer peak

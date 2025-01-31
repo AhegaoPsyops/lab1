@@ -31,7 +31,7 @@ class Register {
 
             public static void main(String[] args) {
                 Register register = new Register();
-                double amount = 237.86; // Example amount
+                double amount = 20.86; // Example amount
                 Purse purse = register.makeChange(amount);
                 System.out.println(purse);
             }
