@@ -1,5 +1,5 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.lang.*;
 class Purse {
     private final Map<Denomination, Integer> cash = new HashMap<>();
 
@@ -11,14 +11,8 @@ class Purse {
     }
     // somehow this works
     public double remove(Denomination type, int num) {
-        if (!cash.containsKey(type) || cash.get(type) < num) {
-            throw new IllegalArgumentException("Not enough of this denomination in the purse.");
-        }
-        cash.put(type, cash.get(type) - num);
-        if (cash.get(type) == 0) {
-            cash.remove(type);
-        }
-        return num * type.amount();
+        // implement removal of value when calling to register
+        return 0;
     }
 
     public double getValue() {
@@ -26,12 +20,18 @@ class Purse {
     }
 
     public String toString() {
-        StringBuilder sb = new StringBuilder("Purse Contents:\n");
+        StringBuilder value = new StringBuilder();
+        value.append("Total Value: $").append(String.format("%.2f", getValue()));
+        // initially I attempted to build an array, then went with list, then discovered string builder
+
         for (var entry : cash.entrySet()) {
-            sb.append(entry.getKey().name()).append(" (").append(entry.getKey().form()).append("): ").append(entry.getValue()).append("\n");
+            value.append(entry.getKey().name() + ": " + entry.getValue() + "\n");
         }
-        sb.append("Total Value: $").append(String.format("%.2f", getValue()));
-        return sb.toString();
+        value.append("Total Value: $").append(String.format("%.2f", getValue()));
+        return value.toString();
+
+
+
     }
 }
 // im beginning to think i dont understand java
