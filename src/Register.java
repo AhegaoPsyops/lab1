@@ -24,7 +24,7 @@ class Register {
             new Denomination("Dime", 0.10, "coin", "dime.png"),
             new Denomination("Nickel", 0.05, "coin", "nickel.png"),
             new Denomination("Penny", 0.01, "coin", "penny.png");
-    }     If I just make it a list I can make a recursive call instead of making a statement for each denom   */
+    }     If I just make it a list I can make a recursive call instead of making a statement for each denom in array   */
 
             public Purse makeChange(double amt) {
                 Purse purse = new Purse();
