@@ -2,16 +2,16 @@ import java.util.*;
 class Register {
     // somehow this works, thanks geeksforgeeks
     private static final List<Denomination> DENOMINATIONS = List.of(
-                    new Denomination("Hundred Note", 100.00, "bill", "hundred.png"),
-                    new Denomination("Fifty Note", 50.00, "bill", "fifty.png"),
-                    new Denomination("Twenty Note", 20.00, "bill", "twenty.png"),
-                    new Denomination("Ten Note", 10.00, "bill", "ten.png"),
-                    new Denomination("Five Note", 5.00, "bill", "five.png"),
-                    new Denomination("One Note", 1.00, "bill", "one.png"),
-                    new Denomination("Quarter", 0.25, "coin", "quarter.png"),
-                    new Denomination("Dime", 0.10, "coin", "dime.png"),
-                    new Denomination("Nickel", 0.05, "coin", "nickel.png"),
-                    new Denomination("Penny", 0.01, "coin", "penny.png")
+                    new Denomination("Hundred Note", 100.00, "bill", "img/hundred.png"),
+                    new Denomination("Fifty Note", 50.00, "bill", "img/fifty.png"),
+                    new Denomination("Twenty Note", 20.00, "bill", "img/twenty.png"),
+                    new Denomination("Ten Note", 10.00, "bill", "img/ten.png"),
+                    new Denomination("Five Note", 5.00, "bill", "img/five.png"),
+                    new Denomination("One Note", 1.00, "bill", "img/one.png"),
+                    new Denomination("Quarter", 0.25, "coin", "img/quarter.png"),
+                    new Denomination("Dime", 0.10, "coin", "img/dime.png"),
+                    new Denomination("Nickel", 0.05, "coin", "img/nickel.png"),
+                    new Denomination("Penny", 0.01, "coin", "img/penny.png")
             );
  /*   Denomination[] denom = new Denomination[]{
             new Denomination("Hundred", 100.00, "bill", "hundred.png"),
