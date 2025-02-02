@@ -1,6 +1,5 @@
 import java.util.*;
 class Register {
-    // somehow this works, thanks geeksforgeeks
     private static final List<Denomination> DENOMINATIONS = List.of(
                     new Denomination("Hundred Note", 100.00, "bill", "img/hundred.png"),
                     new Denomination("Fifty Note", 50.00, "bill", "img/fifty.png"),
